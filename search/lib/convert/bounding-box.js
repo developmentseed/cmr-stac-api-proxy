@@ -37,7 +37,8 @@ function parseOrdinateString (numStr) {
 }
 
 function pointStringToPoints (pointStr) {
-  return chunk(parseOrdinateString(pointStr), 2);
+  const latLons = chunk(parseOrdinateString(pointStr), 2);
+  return latLons.map((latLon) => [latLon[1], latLon[0]]);
 }
 
 module.exports = {
