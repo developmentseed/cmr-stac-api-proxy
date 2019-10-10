@@ -26,14 +26,15 @@ const WFS_PARAMS_CONVERSION_MAP = {
 const makeCmrSearchUrl = (path, queryParams = null) => {
   return UrlBuilder.create()
     .withProtocol('https')
-    .withHost('cmr.earthdata.nasa.gov/search')
+    .withHost('cmr.maap-project.org/search')
     .withPath(path)
     .withQuery(queryParams)
     .build();
 };
 
 const headers = {
-  'Client-Id': 'cmr-stac-api-proxy'
+  'Client-Id': 'cmr-stac-api-proxy',
+  'Echo-Token': process.env.ECHO_TOKEN
 };
 
 async function cmrSearch (url, params) {
